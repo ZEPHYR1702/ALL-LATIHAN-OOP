@@ -13,7 +13,7 @@ namespace FormOvoSimpleApplication
 {
     public partial class FormOvo : Form
     {
-        OvoApp myAccount;
+        OvoApp myAccount = new OvoApp();
         public FormOvo()
         {
             InitializeComponent();
@@ -21,35 +21,57 @@ namespace FormOvoSimpleApplication
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            myAccount = new OvoApp();
+            try
+            {
+                string nama = textBoxName.Text;
+                int.TryParse(textBoxPhoneNumber.Text, out int noTelpon);
+                int.TryParse(textBoxPIN.Text, out int pin);
+                string ovoID = textBoxOvoID.Text;
 
-            string nama = textBoxName.Text;
-            int noTelpon = int.Parse(textBoxPhoneNumber.Text);
-            int pin = int.Parse(textBoxPIN.Text);
-            string ovoID = textBoxOvoID.Text;
+                myAccount.Register(nama, noTelpon, pin, ovoID);
 
-            myAccount.Register(nama, noTelpon, pin, ovoID);
-
-            listBoxData.Items.Add($"{myAccount.Nama} telah berhasil dibuat.");
+                listBoxData.Items.Clear();
+                listBoxData.Items.Add($"{myAccount.Nama} telah berhasil dibuat.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonTopUp_Click(object sender, EventArgs e)
         {
-            int nominal = int.Parse(numericUpDownNominalTopUp.Value.ToString());
+            try
+            {
+                int nominal = int.Parse(numericUpDownNominalTopUp.Value.ToString());
 
-            myAccount.TopUp(nominal);
+                myAccount.TopUp(nominal);
 
-            listBoxData.Items.Add($"Top Up sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}");
+                listBoxData.Items.Clear();
+                listBoxData.Items.Add($"Top Up sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonBuy_Click(object sender, EventArgs e)
         {
-            int nominal = int.Parse(numericUpDownPrice.Value.ToString());
-            string kategori = comboBoxItems.Text;
+            try
+            {
+                int nominal = int.Parse(numericUpDownPrice.Value.ToString());
+                string kategori = comboBoxItems.Text;
 
-            myAccount.Buy(nominal);
+                myAccount.Buy(nominal);
 
-            listBoxData.Items.Add($"Pembelian {kategori} sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}, OVO Points: {myAccount.OvoPoints}");
+                listBoxData.Items.Clear();
+                listBoxData.Items.Add($"Pembelian {kategori} sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}, OVO Points: {myAccount.OvoPoints}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonDisplayData_Click(object sender, EventArgs e)

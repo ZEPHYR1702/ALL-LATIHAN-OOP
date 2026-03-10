@@ -78,6 +78,7 @@
             // numericUpDownNominalTopUp
             // 
             numericUpDownNominalTopUp.Location = new Point(128, 47);
+            numericUpDownNominalTopUp.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
             numericUpDownNominalTopUp.Name = "numericUpDownNominalTopUp";
             numericUpDownNominalTopUp.Size = new Size(204, 23);
             numericUpDownNominalTopUp.TabIndex = 9;
@@ -154,6 +155,7 @@
             // numericUpDownPrice
             // 
             numericUpDownPrice.Location = new Point(151, 76);
+            numericUpDownPrice.Maximum = new decimal(new int[] { 1874919424, 2328306, 0, 0 });
             numericUpDownPrice.Name = "numericUpDownPrice";
             numericUpDownPrice.Size = new Size(120, 23);
             numericUpDownPrice.TabIndex = 11;

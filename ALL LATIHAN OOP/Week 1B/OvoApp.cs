@@ -14,28 +14,101 @@ namespace ALL_LATIHAN_OOP
         private string ovoID;
         private int pin;
 
-        public string Nama { get => nama; set => nama = value; }
         public int OvoCash { get => ovoCash; set => ovoCash = value; }
         public int OvoPoints { get => ovoPoints; set => ovoPoints = value; }
-        public int NomorTelpon { get => nomorTelpon; set => nomorTelpon = value; }
-        public string OvoID { get => ovoID; set => ovoID = value; }
-        public int Pin { get => pin; set => pin = value; }
+
+        public string Nama 
+        { 
+            get => nama; 
+            set
+            {
+                if (value != "")
+                {
+                    nama = value;
+                }
+                else
+                {
+                    throw new Exception("Nama tidak boleh kosong");
+                }
+            }
+        }
+        
+        public int NomorTelpon 
+        { 
+            get => nomorTelpon;
+            set
+            {
+                if (value != 0)
+                {
+                    nomorTelpon = value;
+                }
+                else
+                {
+                    throw new Exception("Nomor telpon tidak boleh kosong");
+                }
+            }
+        }
+        public string OvoID 
+        { 
+            get => ovoID;
+            set
+            {
+                if (value != "")
+                {
+                    ovoID = value;
+                }
+                else
+                {
+                    throw new Exception("Ovo ID tidak boleh kosong");
+                }
+            }
+        }
+        public int Pin 
+        { 
+            get => pin;
+            set
+            {
+                if (value != 0)
+                {
+                    pin = value;
+                }
+                else
+                {
+                    throw new Exception("PIN tidak boleh kosong");
+                }
+            }
+        }
 
         public void TopUp(int nominal)
         {
-            OvoCash += nominal;
+            if (nominal < 10000)
+            {
+                throw new Exception("Minimal top up adalah 10000");
+            }
+            else
+            {
+                OvoCash += nominal;
+            }
         }
 
         public void Buy(int nominal)
         {
             if (OvoCash >= nominal)
             {
-                OvoCash -= nominal;
-                OvoPoints += (nominal / 100);
+                if (nominal < 5000)
+                {
+                    throw new Exception("Minimal transaksi adalah 5000");
+                }
+                else
+                {
+                    OvoCash -= nominal;
+                    OvoPoints += (nominal / 100);
+                }
             }
             else
             {
                 //saldo tidak cukup
+                throw new Exception("Saldo anda tidak cukup");
             }
         }
 
