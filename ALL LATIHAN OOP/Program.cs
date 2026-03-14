@@ -1,3 +1,4 @@
+using ALL_LATIHAN_OOP.Week_2B;
 using FormOvoSimpleApplication;
 
 namespace ALL_LATIHAN_OOP
@@ -13,7 +14,9 @@ namespace ALL_LATIHAN_OOP
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormOvo());
+            Application.Run(new FormFraction());
+
+            
         }
     }
 }
