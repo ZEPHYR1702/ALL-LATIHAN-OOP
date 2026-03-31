@@ -29,25 +29,63 @@
         private void InitializeComponent()
         {
             label1 = new Label();
+            comboBoxWeek = new ComboBox();
+            comboBoxForm = new ComboBox();
+            buttonEnter = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(68, 42);
             label1.Name = "label1";
-            label1.Size = new Size(107, 15);
+            label1.Size = new Size(181, 22);
             label1.TabIndex = 0;
             label1.Text = "ALL LATIHAN OOP";
+            // 
+            // comboBoxWeek
+            // 
+            comboBoxWeek.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBoxWeek.FormattingEnabled = true;
+            comboBoxWeek.Location = new Point(68, 90);
+            comboBoxWeek.Name = "comboBoxWeek";
+            comboBoxWeek.Size = new Size(181, 26);
+            comboBoxWeek.TabIndex = 1;
+            comboBoxWeek.SelectedIndexChanged += comboBoxWeek_SelectedIndexChanged;
+            // 
+            // comboBoxForm
+            // 
+            comboBoxForm.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBoxForm.FormattingEnabled = true;
+            comboBoxForm.Location = new Point(68, 144);
+            comboBoxForm.Name = "comboBoxForm";
+            comboBoxForm.Size = new Size(181, 26);
+            comboBoxForm.TabIndex = 2;
+            // 
+            // buttonEnter
+            // 
+            buttonEnter.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonEnter.Location = new Point(68, 189);
+            buttonEnter.Name = "buttonEnter";
+            buttonEnter.Size = new Size(181, 36);
+            buttonEnter.TabIndex = 3;
+            buttonEnter.Text = "Enter";
+            buttonEnter.UseVisualStyleBackColor = true;
+            buttonEnter.Click += buttonEnter_Click;
             // 
             // FormMaster
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(325, 285);
+            Controls.Add(buttonEnter);
+            Controls.Add(comboBoxForm);
+            Controls.Add(comboBoxWeek);
             Controls.Add(label1);
             Name = "FormMaster";
             Text = "FormMaster";
+            Load += FormMaster_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -55,5 +93,8 @@
         #endregion
 
         private Label label1;
+        private ComboBox comboBoxWeek;
+        private ComboBox comboBoxForm;
+        private Button buttonEnter;
     }
 }

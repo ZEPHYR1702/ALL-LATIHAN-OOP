@@ -53,6 +53,7 @@
             groupBoxRegisterAccount = new GroupBox();
             label1 = new Label();
             groupBoxDisplayData = new GroupBox();
+            comboBoxSelectedAccounts = new ComboBox();
             groupBoxTopUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNominalTopUp).BeginInit();
             groupBoxBuy.SuspendLayout();
@@ -329,11 +330,20 @@
             groupBoxDisplayData.TabStop = false;
             groupBoxDisplayData.Text = "Display Data";
             // 
+            // comboBoxSelectedAccounts
+            // 
+            comboBoxSelectedAccounts.FormattingEnabled = true;
+            comboBoxSelectedAccounts.Location = new Point(630, 464);
+            comboBoxSelectedAccounts.Name = "comboBoxSelectedAccounts";
+            comboBoxSelectedAccounts.Size = new Size(121, 23);
+            comboBoxSelectedAccounts.TabIndex = 25;
+            // 
             // FormOvo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(891, 502);
+            Controls.Add(comboBoxSelectedAccounts);
             Controls.Add(groupBoxTopUp);
             Controls.Add(groupBoxBuy);
             Controls.Add(buttonExit);
@@ -382,6 +392,7 @@
         private System.Windows.Forms.GroupBox groupBoxDisplayData;
         private NumericUpDown numericUpDownNominalTopUp;
         private NumericUpDown numericUpDownPrice;
+        private ComboBox comboBoxSelectedAccounts;
     }
 }
 

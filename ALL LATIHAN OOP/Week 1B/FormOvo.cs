@@ -13,7 +13,11 @@ namespace FormOvoSimpleApplication
 {
     public partial class FormOvo : Form
     {
-        OvoApp myAccount = new OvoApp();
+        //global variable
+        OvoApp myAccount;
+        OvoApp selectedAccount;
+        BindingList<OvoApp> ovoAccounts = new BindingList<OvoApp>();
+
         public FormOvo()
         {
             InitializeComponent();
@@ -23,15 +27,23 @@ namespace FormOvoSimpleApplication
         {
             try
             {
+                myAccount = new OvoApp();
+
                 string nama = textBoxName.Text;
                 int.TryParse(textBoxPhoneNumber.Text, out int noTelpon);
                 int.TryParse(textBoxPIN.Text, out int pin);
                 string ovoID = textBoxOvoID.Text;
 
                 myAccount.Register(nama, noTelpon, pin, ovoID);
+                ovoAccounts.Add(myAccount);
+
 
                 listBoxData.Items.Clear();
-                listBoxData.Items.Add($"{myAccount.Nama} telah berhasil dibuat.");
+                listBoxData.Items.AddRange(myAccount.DisplayData().Split('\n'));
+
+                comboBoxSelectedAccounts.DataSource = null;
+                comboBoxSelectedAccounts.DataSource = ovoAccounts;
+                comboBoxSelectedAccounts.DisplayMember = "Nama";
             }
             catch (Exception ex)
             {
@@ -45,7 +57,8 @@ namespace FormOvoSimpleApplication
             {
                 int nominal = int.Parse(numericUpDownNominalTopUp.Value.ToString());
 
-                myAccount.TopUp(nominal);
+                selectedAccount = (OvoApp)comboBoxSelectedAccounts.SelectedItem;
+                selectedAccount.TopUp(nominal);
 
                 listBoxData.Items.Clear();
                 listBoxData.Items.Add($"Top Up sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}");
@@ -63,7 +76,8 @@ namespace FormOvoSimpleApplication
                 int nominal = int.Parse(numericUpDownPrice.Value.ToString());
                 string kategori = comboBoxItems.Text;
 
-                myAccount.Buy(nominal);
+                selectedAccount = (OvoApp)comboBoxSelectedAccounts.SelectedItem;
+                selectedAccount.Buy(nominal);
 
                 listBoxData.Items.Clear();
                 listBoxData.Items.Add($"Pembelian {kategori} sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}, OVO Points: {myAccount.OvoPoints}");
@@ -77,12 +91,11 @@ namespace FormOvoSimpleApplication
         private void buttonDisplayData_Click(object sender, EventArgs e)
         {
             listBoxData.Items.Clear();
-            listBoxData.Items.Add($"Nama: {myAccount.Nama}");
-            listBoxData.Items.Add($"Nomor Telepon: {myAccount.NomorTelpon}");
-            listBoxData.Items.Add($"OVO ID: {myAccount.OvoID}");
-            listBoxData.Items.Add($"Saldo OVO Cash: {myAccount.OvoCash}");
-            listBoxData.Items.Add($"Saldo OVO Points: {myAccount.OvoPoints}");
-
+            foreach (OvoApp account in ovoAccounts)
+            {
+                listBoxData.Items.AddRange(account.DisplayData().Split('\n'));
+                listBoxData.Items.Add("--------------------------------------------------");
+            }
         }
 
         private void buttonClearData_Click(object sender, EventArgs e)

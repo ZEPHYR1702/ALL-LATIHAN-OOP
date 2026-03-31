@@ -14,9 +14,9 @@ namespace ALL_LATIHAN_OOP
         private string ovoID;
         private int pin;
 
+        #region Properties
         public int OvoCash { get => ovoCash; set => ovoCash = value; }
         public int OvoPoints { get => ovoPoints; set => ovoPoints = value; }
-
         public string Nama 
         { 
             get => nama; 
@@ -78,7 +78,9 @@ namespace ALL_LATIHAN_OOP
                 }
             }
         }
+        #endregion
 
+        #region Method
         public void TopUp(int nominal)
         {
             if (nominal < 10000)
@@ -107,7 +109,6 @@ namespace ALL_LATIHAN_OOP
             }
             else
             {
-                //saldo tidak cukup
                 throw new Exception("Saldo anda tidak cukup");
             }
         }
@@ -121,5 +122,17 @@ namespace ALL_LATIHAN_OOP
             OvoCash = 0;
             OvoPoints = 0;
         }
+
+        public string DisplayData()
+        {
+            string data =
+                $"Nama: {this.Nama}\n" +
+                $"Nomor Telpon: {this.NomorTelpon}\n" +
+                $"OVO ID: {this.OvoID}\n" +
+                $"OVO Cash: {this.OvoCash}\n" +
+                $"OVO Points: {this.OvoPoints}";
+            return data;
+        }
+        #endregion
     }
 }
