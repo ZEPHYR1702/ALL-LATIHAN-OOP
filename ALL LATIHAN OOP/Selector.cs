@@ -4,13 +4,15 @@ using System.Text;
 
 namespace ALL_LATIHAN_OOP
 {
-    public class Selector
+    public static class Selector
     {
-        Dictionary<string, List<string>> selector = new Dictionary<string, List<string>>()
-        {
-            {"WEEK 1B", new List<string> {"FormOvo" } },
-            {"WEEK 2B", new List<string> {"FormFraction", "FormTimeApplication" } }
-        };
+        public static Dictionary<string, Form> formSelector = new Dictionary<string, Form>();
 
+        public static void Initialize()
+        {
+            formSelector.Add("Form Ovo", new FormOvoSimpleApplication.FormOvo());
+            formSelector.Add("Form Fraction", new Week_2B.FormFraction());
+            formSelector.Add("Form Time App", new Week_2B.FormTimeApplication());
+        }
     }
 }

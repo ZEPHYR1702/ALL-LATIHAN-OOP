@@ -337,6 +337,7 @@
             comboBoxSelectedAccounts.Name = "comboBoxSelectedAccounts";
             comboBoxSelectedAccounts.Size = new Size(121, 23);
             comboBoxSelectedAccounts.TabIndex = 25;
+            comboBoxSelectedAccounts.SelectedIndexChanged += comboBoxSelectedAccounts_SelectedIndexChanged;
             // 
             // FormOvo
             // 

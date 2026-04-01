@@ -1,5 +1,4 @@
-﻿using ALL_LATIHAN_OOP;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,11 +56,12 @@ namespace FormOvoSimpleApplication
             {
                 int nominal = int.Parse(numericUpDownNominalTopUp.Value.ToString());
 
-                selectedAccount = (OvoApp)comboBoxSelectedAccounts.SelectedItem;
                 selectedAccount.TopUp(nominal);
 
                 listBoxData.Items.Clear();
-                listBoxData.Items.Add($"Top Up sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}");
+                listBoxData.Items.Add($"Top Up sebesar {nominal} berhasil.");
+                listBoxData.Items.Add($"Saldo OVO Cash: {selectedAccount.OvoCash}");
+                listBoxData.Items.Add($"OVO Points: {selectedAccount.OvoPoints}");
             }
             catch (Exception ex)
             {
@@ -76,11 +76,12 @@ namespace FormOvoSimpleApplication
                 int nominal = int.Parse(numericUpDownPrice.Value.ToString());
                 string kategori = comboBoxItems.Text;
 
-                selectedAccount = (OvoApp)comboBoxSelectedAccounts.SelectedItem;
                 selectedAccount.Buy(nominal);
 
                 listBoxData.Items.Clear();
-                listBoxData.Items.Add($"Pembelian {kategori} sebesar {nominal} berhasil. \nSaldo OVO Cash: {myAccount.OvoCash}, OVO Points: {myAccount.OvoPoints}");
+                listBoxData.Items.Add($"Pembelian {kategori} sebesar {nominal} berhasil.");
+                listBoxData.Items.Add($"Saldo OVO Cash: {selectedAccount.OvoCash}");
+                listBoxData.Items.Add($"OVO Points: {selectedAccount.OvoPoints}");
             }
             catch (Exception ex)
             {
@@ -106,6 +107,11 @@ namespace FormOvoSimpleApplication
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBoxSelectedAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedAccount = (OvoApp)comboBoxSelectedAccounts.SelectedItem;
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            comboBoxWeek = new ComboBox();
             comboBoxForm = new ComboBox();
             buttonEnter = new Button();
             SuspendLayout();
@@ -44,21 +43,11 @@
             label1.TabIndex = 0;
             label1.Text = "ALL LATIHAN OOP";
             // 
-            // comboBoxWeek
-            // 
-            comboBoxWeek.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBoxWeek.FormattingEnabled = true;
-            comboBoxWeek.Location = new Point(68, 90);
-            comboBoxWeek.Name = "comboBoxWeek";
-            comboBoxWeek.Size = new Size(181, 26);
-            comboBoxWeek.TabIndex = 1;
-            comboBoxWeek.SelectedIndexChanged += comboBoxWeek_SelectedIndexChanged;
-            // 
             // comboBoxForm
             // 
             comboBoxForm.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBoxForm.FormattingEnabled = true;
-            comboBoxForm.Location = new Point(68, 144);
+            comboBoxForm.Location = new Point(68, 91);
             comboBoxForm.Name = "comboBoxForm";
             comboBoxForm.Size = new Size(181, 26);
             comboBoxForm.TabIndex = 2;
@@ -66,7 +55,7 @@
             // buttonEnter
             // 
             buttonEnter.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonEnter.Location = new Point(68, 189);
+            buttonEnter.Location = new Point(68, 143);
             buttonEnter.Name = "buttonEnter";
             buttonEnter.Size = new Size(181, 36);
             buttonEnter.TabIndex = 3;
@@ -78,10 +67,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(325, 285);
+            ClientSize = new Size(325, 215);
             Controls.Add(buttonEnter);
             Controls.Add(comboBoxForm);
-            Controls.Add(comboBoxWeek);
             Controls.Add(label1);
             Name = "FormMaster";
             Text = "FormMaster";
@@ -93,7 +81,6 @@
         #endregion
 
         private Label label1;
-        private ComboBox comboBoxWeek;
         private ComboBox comboBoxForm;
         private Button buttonEnter;
     }
