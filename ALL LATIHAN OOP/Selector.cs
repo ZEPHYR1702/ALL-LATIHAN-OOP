@@ -12,7 +12,8 @@ namespace ALL_LATIHAN_OOP
         {
             formSelector.Add("Form Ovo", new FormOvoSimpleApplication.FormOvo());
             formSelector.Add("Form Fraction", new Week_2B.FormFraction());
-            formSelector.Add("Form Time App", new Week_2B.FormTimeApplication());
+            //formSelector.Add("Form Time App", new Week_2B.FormTimeApplication());
+            formSelector.Add("Form Bread", new BreadShopApplication.FormBread());
         }
     }
 }
