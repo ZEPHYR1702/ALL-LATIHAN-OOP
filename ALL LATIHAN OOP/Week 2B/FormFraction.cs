@@ -35,7 +35,8 @@ namespace ALL_LATIHAN_OOP.Week_2B
                 frac2.Numerator = int.Parse(textBoxFrac2Num.Text);
                 frac2.Denominator = int.Parse(textBoxFrac2Denom.Text);
 
-                FractionalNumber result = frac1.Multiply(frac2);
+                FractionalNumber result = frac1 * frac2;
+                result.Simplify();
 
                 listBoxOutput.Items.Clear();
                 listBoxOutput.Items.Add($"{frac1} * {frac2} = {result}");
@@ -58,7 +59,7 @@ namespace ALL_LATIHAN_OOP.Week_2B
                 frac2.Numerator = int.Parse(textBoxFrac2Num.Text);
                 frac2.Denominator = int.Parse(textBoxFrac2Denom.Text);
 
-                FractionalNumber result = frac1.Divide(frac2);
+                FractionalNumber result = frac1 / frac2;
 
                 listBoxOutput.Items.Clear();
                 listBoxOutput.Items.Add($"{frac1} / {frac2} = {result}");
@@ -81,7 +82,7 @@ namespace ALL_LATIHAN_OOP.Week_2B
                 frac2.Numerator = int.Parse(textBoxFrac2Num.Text);
                 frac2.Denominator = int.Parse(textBoxFrac2Denom.Text);
 
-                FractionalNumber result = frac1.Add(frac2);
+                FractionalNumber result = frac1 + frac2;
 
                 listBoxOutput.Items.Clear();
                 listBoxOutput.Items.Add($"{frac1} + {frac2} = {result}");
@@ -104,10 +105,11 @@ namespace ALL_LATIHAN_OOP.Week_2B
                 frac2.Numerator = int.Parse(textBoxFrac2Num.Text);
                 frac2.Denominator = int.Parse(textBoxFrac2Denom.Text);
 
-                FractionalNumber result = frac1.Subtrack(frac2);
+                //FractionalNumber result = frac1.Subtrack(frac2);
+                FractionalNumber result = frac1 - frac2;
 
                 listBoxOutput.Items.Clear();
-                listBoxOutput.Items.Add($"{frac1} - {frac2} = {result}");
+                listBoxOutput.Items.Add($"{frac1} - {frac2} = {result.Display()}");
             }
             catch (Exception ex)
             {
